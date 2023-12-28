@@ -8,14 +8,14 @@
         <?php foreach ($notes as $note) : ?>
             <li>
                 <a href="/note?id=<?= $note['id'] ?>" class="text-blue-500 hover:underline">
-                    <?= $note['title']; ?>
+                    <?= htmlspecialchars($note['title']); ?>
                 </a>
             </li>
         <?php endforeach; ?>
-        <p>
-            <a href="/notes/create" class="text-blue-500 hover:underline">Create Note</a>
-        </p>
     </div>
+    <p>
+        <a href="/notes/create" class="text-blue-500 hover:underline">Create Note</a>
+    </p>
 </main>
 
 <?php require('partials/footer.php') ?>
