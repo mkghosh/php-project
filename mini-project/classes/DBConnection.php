@@ -2,6 +2,7 @@
 class DBConnection
 {
     public $conn;
+    public $stmt;
     public function __construct($config, $userName = 'root', $pass = '')
     {
         $dsn = "mysql:" . http_build_query($config, '', ';');
@@ -12,8 +13,21 @@ class DBConnection
 
     public function query($query, $params = [])
     {
-        $stmt = $this->conn->prepare($query);
-        $stmt->execute($params);
-        return $stmt;
+        $this->stmt = $this->conn->prepare($query);
+        $this->stmt->execute($params);
+        return $this;
+    }
+
+    public function getAll() {
+        return $this->stmt->fetchAll();
+    }
+
+    public function find() {
+        return $this->stmt->fetch();
+    }
+
+    public function findOrAbort() {
+        $result = $this->find();
+        return !$result ? abort(Response::NOT_FOUND) : $result;
     }
 }

@@ -1,18 +1,21 @@
-<?php require ('partials/header.php') ?>
-<?php require ('partials/nav.php') ?>
-<?php require ('partials/banner.php') ?>
+<?php require('partials/header.php') ?>
+<?php require('partials/nav.php') ?>
+<?php require('partials/banner.php') ?>
 
 
 <main>
     <div class="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
-        <?php foreach ($notes as $note): ?>
-        <li>
-            <a href="/note?id=<?= $note['id'] ?>" class="text-blue-500 hover:underline">
-                <?= $note['title']; ?>
-            </a>
-        </li>
+        <?php foreach ($notes as $note) : ?>
+            <li>
+                <a href="/note?id=<?= $note['id'] ?>" class="text-blue-500 hover:underline">
+                    <?= $note['title']; ?>
+                </a>
+            </li>
         <?php endforeach; ?>
+        <p>
+            <a href="/notes/create" class="text-blue-500 hover:underline">Create Note</a>
+        </p>
     </div>
 </main>
 
-<?php require ('partials/footer.php') ?>
+<?php require('partials/footer.php') ?>
