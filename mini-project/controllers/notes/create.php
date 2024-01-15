@@ -2,11 +2,12 @@
 $heading = 'Create Note';
 $user_id = 2;
 include 'utils/Validator.php';
-$config = require('./utils/config.php');
+$config = basePath('utils/config.php');
 $dbCon  = new DBConnection($config['dbConf'], 'root', 'Purna@2020');
+$errors = [];
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $errors = [];
+
     $body = $_POST['body'];
     if (! Validator::string($body, 1, 1000)) {
         $errors['body'] = 'A body of less then 1000 chars is required';
@@ -20,5 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         ]);
     }
 }
-
-require('views/note-create.view.php');
+view('/notes/create.view.php', [
+    'heading' => 'Create Note',
+    'errors' => $errors
+]);

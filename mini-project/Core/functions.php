@@ -18,3 +18,13 @@ function authorize($note, $user_id)
         abort(Response::FORBIDDEN);
     }
 }
+
+function basePath($path) {
+    return BASE_PATH . $path;
+}
+
+
+function view($path, $attrs = []) {
+    extract($attrs);
+    require basePath('views/' . $path);
+}
