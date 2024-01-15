@@ -7,14 +7,13 @@
 
 const BASE_PATH = __DIR__ . '/../';
 
-require BASE_PATH . 'Core/functions.php';
-// require basePath("Core/DBConnection.php");
+require BASE_PATH . 'utils/functions.php';
 
 spl_autoload_register(function ($class) {
     require basePath("Core/{$class}.php");
 });
 
-require basePath("Core/router.php");
+require basePath("utils/router.php");
 
 
 
