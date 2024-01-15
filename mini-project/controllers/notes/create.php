@@ -1,8 +1,7 @@
 <?php
 $heading = 'Create Note';
 $user_id = 2;
-include 'utils/Validator.php';
-$config = basePath('utils/config.php');
+$config = require basePath('utils/config.php');
 $dbCon  = new DBConnection($config['dbConf'], 'root', 'Purna@2020');
 $errors = [];
 

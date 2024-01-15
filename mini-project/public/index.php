@@ -8,17 +8,26 @@
 const BASE_PATH = __DIR__ . '/../';
 
 require BASE_PATH . 'Core/functions.php';
-require basePath("/Core/router.php");
+// require basePath("Core/DBConnection.php");
 
 spl_autoload_register(function ($class) {
-    var_dump($class);
     require basePath("Core/{$class}.php");
 });
 
+require basePath("Core/router.php");
+
+
+
+
+
+
+// $config = basePath('utils/config.php');
+// $dbCon  = new DBConnection($config['dbConf'], 'root', 'Purna@2020');
+
 // $query = "select * from posts where id = ?";
 // $params = [$_GET['id']];
-// $posts = $dbCon->query($query, $params)->fetchAll();
-// // dd($posts);
+// $posts = $dbCon->query($query, $params)->getAll();
+// dd($posts);
 // foreach ($posts as $post) {
 //     # code...
 //     echo "<li>" . $post['title'] . "</li>";
